@@ -1,0 +1,21 @@
+name: Test Reusable WorkFlow user
+
+on:
+  workflow_dispatch:
+  release:
+    types:
+      - 'published'
+
+jobs:
+  slack:
+    if: github.event_name == 'release' && github.event.action == 'published'  
+    uses: gudiaolabs/slack-notify/.github/workflows/slack-notify.yml@main
+    secrets: 
+      slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+
+
+
+
+
+
